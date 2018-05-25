@@ -4,6 +4,5 @@
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 
 <t:layout>
-    <a href="<c:url value="/logout" />">Logout</a>
-    Hello ${name}
+Hello ${name}
 </t:layout>

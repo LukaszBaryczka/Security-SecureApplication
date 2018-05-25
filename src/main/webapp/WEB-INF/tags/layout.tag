@@ -7,20 +7,31 @@
     <title>Secure application</title>
     <meta name="description" content="Secure application">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
+    <style>
+        body {
+            background-color: #ccccff;
+            color: black;
+        }
+
+        .content {
+            margin: 1%;
+            float: left;
+        }
+
+        a, input {
+            line-height: 20px;
+            color: black;
+            font-weight: bold;
+        }
+
+    </style>
 </head>
 <body>
-<header>
-    <jsp:include page="/WEB-INF/jsp/menu.jsp" />
-</header>
-
-<div>
+<div class="content">
     <section>
         <jsp:doBody/>
     </section>
 </div>
-
-<footer>
-    <jsp:include page="/WEB-INF/jsp/footer.jsp" />
-</footer>
 </body>
 </html>
