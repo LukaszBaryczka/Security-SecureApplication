@@ -46,7 +46,7 @@ Hello ${name}
     </script>
 
 
-    <body onload = "setTimeout('enable()', 1000)">
+    <%--<body onload = "setTimeout('enable()', 1000)">--%>
 
 
     <script type = "text/javascript">
@@ -55,21 +55,22 @@ Hello ${name}
             var submittedAlready=false;
             var x = document.getElementById("addCommentToDatabase");
             x.disabled = true;
-            x.value = "Saving and verifing comment in datebase....";
+            x.innerHTML = "Saving and verifing comment in datebase....";
             setTimeout('checkInDatabase()', 2000);
 
         }
 
         function checkInDatabase() {
             var x = document.getElementById("addCommentToDatabase");
-            x.value = "Sucessful added";
+            x.innerHTML = "Sucessful added";
             setTimeout('backToDefault()', 1000);
         }
 
         function backToDefault(){
             var x = document.getElementById("addCommentToDatabase");
             x.disabled = false;
-            x.value = "Add comment";
+            x.innerHTML = "Add comment";
+            x.form.submit();
         }
 
         function simpleDisable() {
@@ -86,13 +87,14 @@ Hello ${name}
 
         function enable() {
             var x = document.getElementById("addComment");
-            x.value = "Add comment";
+            x.innerHTML = "Add comment";
             x.disabled = false;
+            x.form.submit();
         }
 
         function disable() {
             var x = document.getElementById("addComment");
-            x.value = "Adding comment...";
+            x.innerHTML = "Adding comment...";
             x.disabled = true;
             setTimeout('enable()', 2000);
         }
@@ -103,27 +105,27 @@ Hello ${name}
         <form:form modelAttribute="commentForm" action="/comment" method="POST">
             <form:textarea type="text" path="content"/>
             <div>
-                <div class="form-actions">
-                    <form:button type="submit" class="btn">comment</form:button>
-                </div>
+                <%--<div class="form-actions">--%>
+                    <%--<form:button type="submit" class="btn">comment</form:button>--%>
+                <%--</div>--%>
             </div>
 
 
-        <p>Check connection connect database</p>
-            <form:button type = "submit" id = "addCommentToDatabase" class="btn" value = "Add comment" onclick = "checkStateInDatabase()"> Add comment</form:button>
+        <p>Check connection to database</p>
+            <form:button type="submit" id = "addCommentToDatabase" value = "Add comment" onclick = "return checkStateInDatabase()"> Add comment</form:button>
 
         <p>JQuery</p>
-        <form:button  type="submit" class="btn" value="Add comment" id='btnsubmit'>Add comment</form:button>
+        <form:button  type="submit" value="Add comment" id='btnsubmit'>Add comment</form:button>
 
         <p>JQuery</p>
-            <form:button  type="submit" class="btn" value="Add comment" id='btnsubmit1'>Add comment</form:button>
+            <form:button  type="submit" value="Add comment" id='btnsubmit1'>Add comment</form:button>
 
         <p>Disable for some time</p>
-            <form:button type = "submit" id = "addComment" class="btn" onclick = "disable()" >Add comment </form:button>
+            <form:button type="submit" id = "addComment" onclick = "disable()" >Add comment </form:button>
 
 
         <p>Simple disable</p>
-        <form:button name="submitButton" type="submit" value="Add comment"  onclick="this.disabled=true" >Add comment</form:button>
+        <form:button type="submit" name="submitButton123" value="Add comment"  onclick="this.disabled=true;" >Add comment</form:button>
 
 
         <p>By alert</p>
